@@ -53,9 +53,10 @@ def carregar_dados(df: pd.DataFrame, formatos_saida: list):
     if 'xlsx' in formatos_saida:
         df.to_excel('dados_consolidados_empresas.xlsx', index=False)
 
-if __name__ == "__main__":
-    pasta='data'
-    df_consolidado = consolidar_csv(path=pasta)
-    format_saida: list = ['json']
+def ler_empresas_carregar_dados(pasta: str, format_saida: list):
+    """
+    Função principal para ler os arquivos CSV e carregar os dados em diferentes formatos.
+    """
+    df_consolidado = consolidar_csv(pasta)
     carregar_dados(df_consolidado, format_saida)
     print(f"Dados consolidados e salvos em {format_saida}.")
